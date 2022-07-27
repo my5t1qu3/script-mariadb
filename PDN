@@ -1,0 +1,17 @@
+SELECT kode_tender,judul_pekerjaan, tgl_rekam FROM `NEP_PDN_TENDER`
+WHERE kode_kantor='45A'
+ORDER BY tgl_rekam DESC
+
+202206.45A.00037
+
+
+
+SELECT 
+(SELECT judul_pekerjaan FROM  `NEP_PDN_TENDER` WHERE kode_tender=a.kode_tender)nama_pengadaan,
+(SELECT SUM(jumlah*harga) FROM `NEP_PDN_ITEM_TENDER` WHERE kode_tender=a.kode_tender)HPS,
+(SELECT nama_Vendor FROM `NEP_VENDOR` WHERE kode_vendor=a.kode_vendor)nama_vendor,
+        SUM(harga*jumlah)  
+FROM `NEP_PDN_ITEM_PENAWARAN` a 
+WHERE kode_tender='202205.45A.00033'
+GROUP BY kode_vendor
+ORDER BY SUM(harga*jumlah) ASC
