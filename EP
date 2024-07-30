@@ -1,0 +1,64 @@
+SELECT kode_tender,judul_pekerjaan, tgl_rekam,petugas_rekam,
+(SELECT FORMAT(SUM(jumlah*harga),2) FROM `NEP_PDN_ITEM_TENDER` WHERE kode_tender=a.kode_tender)hps
+ FROM `NEP_PDN_TENDER` a
+WHERE kode_kantor='45A'
+ORDER BY tgl_rekam DESC
+
+
+
+====================================================================
+
+
+
+SELECT * FROM `NEP_PDN_KOMENTAR_TENDER`
+WHERE kode_tender='202207.45A.00047'
+
+
+SELECT * FROM `NEP_PDN_PESAN_TENDER`
+WHERE kode_tender='202207.45A.00047'
+ORDER BY TGL_REKAM
+
+	
+
+
+
+	SELECT kode_vendor,
+	(SELECT nama_vendor FROM NEP.NEP_VENDOR WHERE kode_vendor=b.kode_vendor) vendor,
+	FORMAT(SUM(jumlah*harga),2) penawaran,
+	( SELECT FORMAT(SUM(harga*jumlah),2) FROM `NEP_PDN_ITEM_TENDER` WHERE kode_tender=b.kode_tender) hps
+	FROM  NEP.NEP_PDN_ITEM_PENAWARAN b
+	 WHERE b.kode_tender='202406.45A.00045'
+	 GROUP BY kode_vendor
+	 ORDER BY penawaran DESC
+
+
+SELECT * FROM NEP.NEP_PDN_ITEM_PENAWARAN WHERE kode_tender='202403.45A.00007' AND kode_vendor='5948'
+
+
+ SELECT * FROM `NEP_PDN_ITEM_TENDER` WHERE kode_tender='202406.45A.00045'
+ 
+ SELECT FORMAT(SUM(jumlah*harga),2) FROM `NEP_PDN_ITEM_TENDER` WHERE kode_tender='202406.45A.00045'
+ 
+ SELECT FORMAT(SUM(jumlah*harga),2) FROM `NEP_PDN_ITEM_TENDER` WHERE kode_tender='202209.45A.00064-1'
+ 
+ SELECT * FROM `NEP_PDN_PESAN_TENDER`  WHERE kode_tender='202401.45A.00003' ORDER BY kode_pesan_tender ASC
+ 
+
+
+ 
+ 
+ SELECT * FROM `NEP_PDN_ITEM_PENAWARAN` WHERE kode_tender='202206.45A.00043'
+
+ SELECT * FROM `NEP_PDN_KOMENTAR_TENDER` WHERE kode_tender='202308.45A.00046' ORDER BY tgl_rekam DESC
+
+ 
+  SELECT SUM (harga*jumlah) FROM `NEP_PDN_ITEM_TENDER` WHERE kode_tender='202208.45A.00054'
+  
+ SELECT * FROM `NEP_PDN_ITEM_PENAWARAN` WHERE kode_tender='202308.45A.00046'  AND kode_vendor='5948'
+ 
+SELECT * FROM `NEP_PDN_KOMENTAR_EVALUASI` 
+
+
+ 
+  
+12.234.184.720
